@@ -185,7 +185,7 @@ class SpeculativeDecoder:
                 # reject loop
                 else:
                     # TODO: Reject and resample from adjusted distribution
-                    adjusted_prob = self.max_fn(target_probs[0] - draft_probs[0]) # difference between the probabilities of all the tokens in the vocab for the particular t-th token
+                    adjusted_prob = self.max_fn(target_probs[0] - draft_probs[0]) # difference between the probabilities of all the logits in the vocab for the particular t-th token
                     adjusted_prob = adjusted_prob / adjusted_prob.sum()
 
                     new_token = torch.multinomial(adjusted_prob, num_samples=1)
